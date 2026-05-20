@@ -316,6 +316,20 @@ export const handlers = [
     const query = body.query ?? "";
     const variables = body.variables ?? {};
 
+    if (query.includes("pullRequestReviewThreads")) {
+      return HttpResponse.json({
+        data: {
+          repository: {
+            pullRequest: {
+              reviewThreads: {
+                nodes: [],
+              },
+            },
+          },
+        },
+      });
+    }
+
     if (query.includes("closedByPullRequestsReferences")) {
       const issueNumber = Number(variables.issue_number);
       const owner = String(variables.owner ?? "");

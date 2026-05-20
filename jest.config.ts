@@ -3,9 +3,10 @@ import type { Config } from "jest";
 const cfg: Config = {
   testEnvironment: "node",
   transform: {
-    "^.+\\.[jt]s$": "@swc/jest",
+    "^.+\\.[jt]sx?$": "@swc/jest",
+    "^.+\\.mjs$": "@swc/jest",
   },
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "mjs", "json", "node"],
   coveragePathIgnorePatterns: ["node_modules", "mocks", "tests"],
   collectCoverage: true,
   coverageReporters: ["json", "lcov", "text", "clover", "json-summary"],
